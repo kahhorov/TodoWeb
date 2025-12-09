@@ -2,14 +2,24 @@ import { CiUser } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import useAxios from "../../hooks/useAxios";
+import { toast } from "react-toastify";
 function CreateUsers() {
   const {post} = useAxios()
   function handleSubmit(e) {
     e.preventDefault()
     const formData =new FormData(e.target)
     const newUser = Object.fromEntries(formData)
-    post(newUser);
-    
+    toast.promise(
+      post(newUser),
+      {
+        pending:"Qo'shilmoqda...",
+        success:"Muvaffaqiyatli qo'shildi",
+        error:"User qo'shilmadi!"
+      }
+    )
+    setTimeout(() => {
+      e.target.reset()
+    },1300)
   }
 
   return (

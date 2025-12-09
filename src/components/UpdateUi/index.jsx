@@ -57,9 +57,9 @@ export default function UpdateUi({ data,setData }) {
               Email
             </TableCell>
             <TableCell
-              sx={{ width: "10px" }}
+              sx={{ width: "200px" }}
               align="start"
-              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border "
+              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border"
             >
               Edit / Delete
             </TableCell>
