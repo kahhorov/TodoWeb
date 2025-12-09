@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@theme{
+  --color-website-bg:#101828
+}
+@layer base {
+  #root {
+    @apply flex flex-col w-full h-screen;
+  }
+  body{
+    @apply bg-website-bg  text-white
+  }
+  button{
+    @apply cursor-pointer
+  }
+}
+@layer utilities {
+  .container {
+    @apply w-full max-w-[1332px] px-4 mx-auto;
+  }
+}
