@@ -25,8 +25,9 @@ function UpdateUi({ data }) {
                 <Typography gutterBottom variant="h5" component="div">
                   {name}
                 </Typography>
-                <Typography variant="p">{age}</Typography>
-                <Typography variant="p">{email}</Typography>
+                <Typography variant="p">Age: {age}</Typography>
+                <br />
+                <Typography variant="p">Email: {email}</Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
