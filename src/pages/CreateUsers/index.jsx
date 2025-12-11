@@ -3,6 +3,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import useAxios from "../../hooks/useAxios";
 import { toast } from "react-toastify";
+import HomeLink from "../../components/HomeLink";
 function CreateUsers() {
   const { post } = useAxios();
   function handleSubmit(e) {
@@ -24,7 +25,7 @@ function CreateUsers() {
       <h2 className="text-2xl w-full text-center mt-10 font-black">
         Create User
       </h2>
-
+      <HomeLink />
       <form
         onSubmit={handleSubmit}
         className="w-[320px] mx-auto mt-10 flex flex-col gap-5"

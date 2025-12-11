@@ -7,6 +7,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { toast } from "react-toastify";
 import Loading from "../../components/Loading";
 import Button from "@mui/material/Button";
+import HomeLink from "../../components/HomeLink";
 
 function UserPage() {
   const [data, setData] = useState(null);
@@ -46,7 +47,10 @@ function UserPage() {
 
   return (
     <div>
-      <h2 className="text-2xl w-full text-center mt-10 font-black">User Settings</h2>
+      <h2 className="text-2xl w-full text-center mt-10 font-black">
+        User Settings
+      </h2>
+      <HomeLink />
       <form
         onSubmit={handleSubmit}
         className="w-[320px] mx-auto mt-10 flex flex-col gap-5"
@@ -106,6 +110,7 @@ function UserPage() {
           Delete
         </Button>
       </form>
+      
     </div>
   );
 }
