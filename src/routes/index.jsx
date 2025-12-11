@@ -19,7 +19,7 @@ function Routes() {
           element:<CreateUsers/>
         },
          {
-          path:"/user-page",
+          path:"/user-page/:id",
           element:<UserPage/>
         }
       ],

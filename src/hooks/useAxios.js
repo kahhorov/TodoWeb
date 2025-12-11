@@ -5,25 +5,25 @@ function useAxios() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const res = async (method, url, data = null ,id) => {
+  const res = async (method, url, data = null, id) => {
     setLoading(true);
     try {
-      const response = await axiosApi({ method, url, data});
+      const response = await axiosApi({ method, url, data });
       return await response.data;
     } catch (error) {
-      setError(error);
+      setError(error.message);
       return null;
     } finally {
       setLoading(false);
     }
   };
-
   return {
     loading,
     error,
-    get: () => res("get", "/allUsers"),
+    get: (id = "") => res("get", "/allUsers" + id),
+    del: (id) => res("delete", `/allUsers/${id}`),
     post: (data) => res("post", "/allUsers", data),
-    del: (id) => res("delete",`/allUsers/${id}`)
+    put: (data, id) => res("put", `/allUsers/${id}`, data),
   };
 }
 

@@ -1,101 +1,46 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { AiOutlineFieldNumber } from "react-icons/ai";
-import Button from "@mui/material/Button";
-import useAxios from "../../hooks/useAxios";
-import { toast } from "react-toastify";
-export default function UpdateUi({ data,setData }) {
-  const { del } = useAxios();
-  async function handleDelete(id) {
-    await toast.promise(
-    del(id), 
-    {
-      pending: "O'chirilmoqda...",
-      success: "Muvaffaqiyatli o'chirildi!",
-      error: "O'chirishda xatolik!"
-    }
-  );
-    const delData = data.filter((user) => user.id !== id)
-    setData(delData)
-  }
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardActions from "@mui/material/CardActions";
+import { Link } from "react-router-dom";
+
+function UpdateUi({ data }) {
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        background: "transparent",
-        "& td, & th": { color: "white", borderBottom: "none" },
-      }}
-      className="border-gray-500/20 border"
-    >
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow className="border-b-gray-500/20 border">
-            <TableCell
-              sx={{ fontSize: "25px" }}
-              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border "
-            >
-              <AiOutlineFieldNumber />
-            </TableCell>
-            <TableCell className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border ">
-              Name
-            </TableCell>
-            <TableCell
-              align="start"
-              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border "
-            >
-              Age
-            </TableCell>
-            <TableCell
-              align="start"
-              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border "
-            >
-              Email
-            </TableCell>
-            <TableCell
-              sx={{ width: "200px" }}
-              align="start"
-              className="border-t-0 border-l-0 border-b-0 border-r-gray-500/20 border"
-            >
-              Edit / Delete
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data &&
-            data.map(({ name, age, email, id }, i) => (
-              <TableRow
-                key={i + 1}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                className="border-b-gray-500/20 border cursor-pointer"
-              >
-                <TableCell sx={{ width: "100px" }}>{i + 1}</TableCell>
-                <TableCell component="th" scope="row">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {data?.map(({ name, age, email, id }) => {
+        return (
+          <Card
+            key={id}
+            sx={{
+              background: "#2331",
+              boxShadow: "0px 0px 20px 1px #123",
+              color: "wheat",
+              p: "20px",
+              borderRadius: "10px",
+            }}
+          >
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
                   {name}
-                </TableCell>
-                <TableCell align="start">{age}</TableCell>
-                <TableCell align="start">{email}</TableCell>
-                <TableCell
-                  align="start"
-                  sx={{ display: "flex", gap: "10px", maxWidth: "100%" }}
-                >
-                  <Button variant="outlined">Edit</Button>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    onClick={() => handleDelete(id)}
-                  >
-                    delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                </Typography>
+                <Typography variant="p">{age}</Typography>
+                <Typography variant="p">{email}</Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Link
+                to={`/user-page/${id}`}
+                className="py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-400 max-sm:w-full max-sm:text-center"
+              >
+                User Settings
+              </Link>
+            </CardActions>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
+export default UpdateUi;
