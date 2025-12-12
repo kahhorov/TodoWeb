@@ -24,13 +24,13 @@ function CreateUsers() {
 
   return (
     <>
-      <h2 className="text-2xl w-full text-center mt-10 font-black">
+      <h2 className="text-2xl w-full text-center mt-10 max-sm:mb-5 font-black">
         Create User
       </h2>
       <HomeLink />
       <form
         onSubmit={handleSubmit}
-        className="w-[320px] mx-auto mt-10 flex flex-col gap-5"
+        className="max-sm:w-[300px] w-[320px] mx-auto mt-10 px-5 flex flex-col gap-5"
       >
         <div className="flex items-center rounded-md bg-white/5 outline-1 -outline-offset-1 outline-gray-600 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-500">
           <div className="shrink-0 text-gray-400 select-none px-2 text-xl">
