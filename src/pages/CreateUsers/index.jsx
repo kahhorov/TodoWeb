@@ -4,6 +4,8 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import useAxios from "../../hooks/useAxios";
 import { toast } from "react-toastify";
 import HomeLink from "../../components/HomeLink";
+import Error from "../../components/Error";
+// component function
 function CreateUsers() {
   const { post } = useAxios();
   function handleSubmit(e) {

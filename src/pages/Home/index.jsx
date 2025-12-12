@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import UpdateUi from "../../components/UpdateUi";
 import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 
 function Home() {
   const [data, setData] = useState(null);
 
-  const { get, loading } = useAxios();
+  const { get, loading, error } = useAxios();
 
   useEffect(() => {
     get().then((res) => setData(res.data));
@@ -14,6 +15,9 @@ function Home() {
 
   if (loading) {
     return <Loading />;
+  }
+  if (error) {
+    return <Error error={error} />;
   }
   return (
     <div className="mt-10 mb-10">
